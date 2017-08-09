@@ -22,6 +22,8 @@ public class HoldemGame {
 		// TODO implement card data structure linked list?
 		LinkedList deck = new LinkedList();
 		
+		// add cards to linkedlist
+		
 		// TODO shuffle cards
 
 	}
