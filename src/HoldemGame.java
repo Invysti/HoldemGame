@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 import java.lang.Math;
 
 public class HoldemGame {
@@ -14,12 +14,15 @@ public class HoldemGame {
 		System.out.printf("There are %d players.", players);
 		
 		// TODO calculate number of cards to be dealt
+		int cardsToDeal = MAX_PLAYERS * 2;
 		
 		// TODO calculate number of cards left in deck
+		int cardsLeft = CARDS - cardsToDeal;
 		
-		// TODO consider how game should be played
+		// TODO implement card data structure linked list?
+		LinkedList deck = new LinkedList();
 		
-		// TODO figure out card data structure
+		// TODO shuffle cards
 
 	}
 
