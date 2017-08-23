@@ -6,6 +6,9 @@ public class HoldemGame {
 	public static final int MAX_PLAYERS = 10;
 	public static final int CARDS = 52;
 	private static ArrayList<Card> deck = new ArrayList<Card>();
+	private static ArrayList<Card> playerCards = new ArrayList<Card>();
+	private static ArrayList<Card> computerCards = new ArrayList<Card>();
+	public static int currentCard = 0;
 	
 	public static void main(String[] args) {
 		// Keyboard for input
@@ -13,34 +16,41 @@ public class HoldemGame {
 
 		// Gets the number of players from the user
 		int players = getPlayers(keyboard);
-		System.out.printf("There are %d players.", players);
+		System.out.printf("There are %d players.\n", players);
 		
 		// Calculates how many cards to deal and how many cards will be left
-		int cardsToDeal = MAX_PLAYERS * 2;
-		int cardsLeft = CARDS - cardsToDeal;
-		
+		int cardsToDeal = (players * 2);
+		System.out.println("Deal " + cardsToDeal + " cards.");
+
 		// Fills the deck ArrayList with Cards
 		fill();
 		
-		// Shuffles the deck using the collections object
-		Collections.shuffle(deck);
-
-		// TODO figure out how to deal cards to # of players
-		// keep in mind that the cards dealt (each players' hand) needs to be accessible to other methods
+		// Deal cards
+		dealCards(players);
+		
+		// Testing the player and computer's hand
+		System.out.println("Player's Cards: " + playerCards.toString());
+		System.out.println("Computer's Cards: " + computerCards.toString());
+		
+		// TODO deal cards to players
+		// TODO figure out functionality of the game
+		// TODO win condition???
+		
 		
 	}
-
+	
+	// Gets the number of players from the user, must be between 2 and 10 players
 	public static int getPlayers(Scanner keyboard) {
 		int player;
 		System.out.println("Please enter the number of players.");
 		do {
-			System.out.print("Please enter an amount between 1 and 10: ");
+			System.out.print("Please enter an amount between 2 and 10: ");
 			while (!keyboard.hasNextInt()) {
 				System.out.print("Please enter an integer: ");
 				keyboard.next();
 			}
 			player = keyboard.nextInt();
-		} while (player < 1 || player > 10);
+		} while (player < 2 || player > 10);
 		return player;
 	}
 	
@@ -51,14 +61,23 @@ public class HoldemGame {
 				deck.add(new Card(v,s));
 			}
 		}
-		/*Test Code
-		deck.add(new Card(Value.TWO, Suit.CLUBS));
-		deck.add(new Card(Value.TWO, Suit.HEARTS));
-		deck.add(new Card(Value.TWO, Suit.DIAMONDS));
-		deck.add(new Card(Value.TWO, Suit.SPADES));
-		deck.add(new Card(Value.ACE, Suit.CLUBS));
-		deck.add(new Card(Value.ACE, Suit.DIAMONDS));
-		deck.add(new Card(Value.KING, Suit.DIAMONDS));*/
+	}
+	
+	// Shuffles and deals the cards to the players
+	// TODO inaccurate number of cards are currently being dealt to the players
+	public static void dealCards(int cardsToDeal) {
+		Collections.shuffle(deck);
+		System.out.print("The deck is: ");
+		System.out.println(deck.toString());
+		// double for loop to simulate dealing one card to each player with the player being last, repeats twice
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < cardsToDeal; j++) {
+				computerCards.add(deck.get(currentCard));
+				currentCard++;
+			}
+			playerCards.add(deck.get(currentCard));
+			currentCard++;
+		}
 	}
 	
 }
