@@ -26,7 +26,7 @@ public class HoldemGame {
 		fill();
 		
 		// Deal cards
-		dealCards(players);
+		dealCards(cardsToDeal);
 		
 		// Testing the player and computer's hand
 		System.out.println("Player's Cards: " + playerCards.toString());
@@ -64,14 +64,13 @@ public class HoldemGame {
 	}
 	
 	// Shuffles and deals the cards to the players
-	// TODO inaccurate number of cards are currently being dealt to the players
 	public static void dealCards(int cardsToDeal) {
 		Collections.shuffle(deck);
 		System.out.print("The deck is: ");
 		System.out.println(deck.toString());
 		// double for loop to simulate dealing one card to each player with the player being last, repeats twice
 		for (int i = 0; i < 2; i++) {
-			for (int j = 0; j < cardsToDeal; j++) {
+			for (int j = 0; j < cardsToDeal/2; j++) {
 				computerCards.add(deck.get(currentCard));
 				currentCard++;
 			}
