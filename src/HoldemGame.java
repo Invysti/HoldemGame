@@ -32,7 +32,7 @@ public class HoldemGame {
 		System.out.println("Player's Cards: " + playerCards.toString());
 		System.out.println("Computer's Cards: " + computerCards.toString());
 		
-		// TODO each player needs an assigned number of chips
+		// Each player begins the game with 1000 chips
 		startingChips(players);
 		System.out.println("Chips vector structure: " + chips.toString());
 		
