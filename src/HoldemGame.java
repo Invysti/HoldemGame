@@ -37,19 +37,40 @@ public class HoldemGame {
 		System.out.println("Chips vector structure: " + chips.toString());
 		
 		// TODO figure out functionality of the game
-			// after dealing cards to player, need to figure out blinds
 			// let's assume that we start with the player as the dealer
 			// so the player to the left of the dealer starts as small blind
 			// player to the left of that person is big blind
 			// since we're using an array of size 20 to represent the computers' hands
 			// we can start a[0] as the small blind meaning a[2] will be big blind
 			// increment the integers by 2 
+			// currently using big blind as 20 and small blind as 10
 		
 		// TODO after collecting blinds, we will need to figure out each computer's decision
 			// TODO this is the difficult part
 		
 		System.out.println("Please post your blinds.");
-		
+		// TEST CODE
+		collectBlind(0);
+		System.out.println("New Chips vector structure: " + chips.toString());
+		collectBlind(1);
+		System.out.println("New Chips vector structure: " + chips.toString());
+		collectBlind(2);
+		System.out.println("New Chips vector structure: " + chips.toString());
+		collectBlind(3);
+		System.out.println("New Chips vector structure: " + chips.toString());
+		collectBlind(4);
+		System.out.println("New Chips vector structure: " + chips.toString());
+		collectBlind(5);
+		System.out.println("New Chips vector structure: " + chips.toString());
+		collectBlind(6);
+		System.out.println("New Chips vector structure: " + chips.toString());
+		collectBlind(7);
+		System.out.println("New Chips vector structure: " + chips.toString());
+		collectBlind(8);
+		System.out.println("New Chips vector structure: " + chips.toString());
+		collectBlind(9);
+		System.out.println("New Chips vector structure: " + chips.toString());
+		// Test code to check if vector has been updated properly.
 		// TODO win condition???
 		
 		
@@ -102,6 +123,35 @@ public class HoldemGame {
 		}
 	}
 	
-	
-	
+	// Collect blinds from players
+	public static void collectBlind(int dealer) {
+		int smallBlind = dealer + 1;
+		int bigBlind = dealer + 2;
+		int smallBlindChips = 0;
+		int bigBlindChips = 0;
+		if (smallBlind > 9) {
+			smallBlindChips = chips.get(0);
+			bigBlindChips = chips.get(1);
+			smallBlind = 0;
+			bigBlind = 1;
+			chips.set(smallBlind, smallBlindChips - 10);
+			chips.set(bigBlind, bigBlindChips - 20);
+		} else if (bigBlind > 9) {
+				smallBlindChips = chips.get(9);
+				bigBlindChips = chips.get(0);
+				smallBlind = 9;
+				bigBlind = 0;
+				chips.set(smallBlind, smallBlindChips - 10);
+				chips.set(bigBlind, bigBlindChips - 20);
+		} else {
+			smallBlindChips = chips.get(dealer+1);
+			bigBlindChips = chips.get(dealer+2);
+			chips.set(smallBlind, smallBlindChips - 10);
+			chips.set(bigBlind, bigBlindChips - 20);
+		}
+		System.out.println("Small Blind Chips " + smallBlindChips);
+		System.out.println("Small Blind Chips " + bigBlindChips);
+		
+		
+	}
 }
