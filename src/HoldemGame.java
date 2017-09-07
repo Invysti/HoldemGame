@@ -36,43 +36,19 @@ public class HoldemGame {
 		startingChips(players);
 		System.out.println("Chips vector structure: " + chips.toString());
 		
-		// TODO figure out functionality of the game
-			// let's assume that we start with the player as the dealer
-			// so the player to the left of the dealer starts as small blind
-			// player to the left of that person is big blind
-			// since we're using an array of size 20 to represent the computers' hands
-			// we can start a[0] as the small blind meaning a[2] will be big blind
-			// increment the integers by 2 
-			// currently using big blind as 20 and small blind as 10
+		
+		
+		System.out.println("Please post your blinds.");
+		// Currently only collects blinds for first round assuming dealer is the player
+		collectBlind(0);
+		System.out.println("New Chips vector structure: " + chips.toString());
 		
 		// TODO after collecting blinds, we will need to figure out each computer's decision
 			// TODO this is the difficult part
 		
-		System.out.println("Please post your blinds.");
-		// TEST CODE
-		collectBlind(0);
-		System.out.println("New Chips vector structure: " + chips.toString());
-		collectBlind(1);
-		System.out.println("New Chips vector structure: " + chips.toString());
-		collectBlind(2);
-		System.out.println("New Chips vector structure: " + chips.toString());
-		collectBlind(3);
-		System.out.println("New Chips vector structure: " + chips.toString());
-		collectBlind(4);
-		System.out.println("New Chips vector structure: " + chips.toString());
-		collectBlind(5);
-		System.out.println("New Chips vector structure: " + chips.toString());
-		collectBlind(6);
-		System.out.println("New Chips vector structure: " + chips.toString());
-		collectBlind(7);
-		System.out.println("New Chips vector structure: " + chips.toString());
-		collectBlind(8);
-		System.out.println("New Chips vector structure: " + chips.toString());
-		collectBlind(9);
-		System.out.println("New Chips vector structure: " + chips.toString());
-		// Test code to check if vector has been updated properly.
-		// TODO win condition???
+		// TODO figure out functionality of the game
 		
+		// TODO win condition???
 		
 	}
 	
@@ -145,8 +121,8 @@ public class HoldemGame {
 				chips.set(smallBlind, smallBlindChips - 10);
 				chips.set(bigBlind, bigBlindChips - 20);
 		} else {
-			smallBlindChips = chips.get(dealer+1);
-			bigBlindChips = chips.get(dealer+2);
+			smallBlindChips = chips.get(smallBlind);
+			bigBlindChips = chips.get(bigBlind);
 			chips.set(smallBlind, smallBlindChips - 10);
 			chips.set(bigBlind, bigBlindChips - 20);
 		}
