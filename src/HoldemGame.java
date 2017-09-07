@@ -124,6 +124,7 @@ public class HoldemGame {
 	}
 	
 	// Collect blinds from players
+	// TODO deal with redundancy
 	public static void collectBlind(int dealer) {
 		int smallBlind = dealer + 1;
 		int bigBlind = dealer + 2;
