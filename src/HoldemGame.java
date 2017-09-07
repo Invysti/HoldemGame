@@ -37,14 +37,19 @@ public class HoldemGame {
 		System.out.println("Chips vector structure: " + chips.toString());
 		
 		
-		
-		System.out.println("Please post your blinds.");
 		// Currently only collects blinds for first round assuming dealer is the player
+		System.out.println("Please post your blinds.");
 		collectBlind(0);
 		System.out.println("New Chips vector structure: " + chips.toString());
 		
+		// Let's begin by assuming that everyone calls
+			// This needs to start at bigBlind + 1 who has the first choice
+			// Call or no call?
+		
 		// TODO after collecting blinds, we will need to figure out each computer's decision
 			// TODO this is the difficult part
+		
+		
 		
 		// TODO figure out functionality of the game
 		
@@ -104,31 +109,16 @@ public class HoldemGame {
 	public static void collectBlind(int dealer) {
 		int smallBlind = dealer + 1;
 		int bigBlind = dealer + 2;
-		int smallBlindChips = 0;
-		int bigBlindChips = 0;
 		if (smallBlind > 9) {
-			smallBlindChips = chips.get(0);
-			bigBlindChips = chips.get(1);
 			smallBlind = 0;
 			bigBlind = 1;
-			chips.set(smallBlind, smallBlindChips - 10);
-			chips.set(bigBlind, bigBlindChips - 20);
+
 		} else if (bigBlind > 9) {
-				smallBlindChips = chips.get(9);
-				bigBlindChips = chips.get(0);
 				smallBlind = 9;
 				bigBlind = 0;
-				chips.set(smallBlind, smallBlindChips - 10);
-				chips.set(bigBlind, bigBlindChips - 20);
-		} else {
-			smallBlindChips = chips.get(smallBlind);
-			bigBlindChips = chips.get(bigBlind);
-			chips.set(smallBlind, smallBlindChips - 10);
-			chips.set(bigBlind, bigBlindChips - 20);
 		}
-		System.out.println("Small Blind Chips " + smallBlindChips);
-		System.out.println("Small Blind Chips " + bigBlindChips);
-		
+		chips.set(smallBlind, chips.get(smallBlind) - 10);
+		chips.set(bigBlind, chips.get(bigBlind) - 20);
 		
 	}
 }
